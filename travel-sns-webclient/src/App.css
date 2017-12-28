@@ -22,6 +22,28 @@
   font-size: large;
 }
 
+#content{ 
+  border: 1px solid red; 
+  padding: 5px; 
+  margin: 5px;  
+  max-width: 500px;  
+}  
+.storyBox{ 
+  border: 1px solid black;
+  padding : 1px;
+  margin: 5px;
+}  
+.storyList{ 
+  border: 1px solid blue; 
+  padding: 5px; 
+  margin: 5px;  
+}  
+.story{ 
+  border: 1px solid black; 
+  padding: 5px; 
+  margin: 5px;  
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
