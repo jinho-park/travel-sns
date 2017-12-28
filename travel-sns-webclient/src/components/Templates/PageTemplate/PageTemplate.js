@@ -1,14 +1,16 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './PageTemplate.scss';
-import { Header } from 'semantic-ui-react';
+import { Header } from 'components';
 
 const cx = classNames.bind(styles);
 
 const PageTemplate = ({header}) =>{
     return(
-        <div classNames={cx('page')}>
-            <Header>dd</Header>
+        <div className={cx('page')}>
+            <div className={cx('header')}>
+            <Header logo="aa"/>
+            </div>
         </div>
     )
 }
