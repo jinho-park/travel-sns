@@ -2,8 +2,18 @@
 
 .search{
     padding-top : 0.5rem;
+    width: 100%;
 }
 
-input{
-    width: 20rem;
+Input{
+    width: 40rem;
+
+    transition: width .3s ease-in-out;
+
+    @include media("<large"){
+        width: 25rem;
+    }
+    @include media("<medium"){
+        width: 11rem;
+    }
 }

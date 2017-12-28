@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './PageTemplate.scss';
-import { Header } from 'components';
+import { Header, AddItem, ShortCut } from 'components';
 
 const cx = classNames.bind(styles);
 
@@ -11,7 +11,14 @@ const PageTemplate = ({header}) =>{
             <div className={cx('header')}>
             <Header logo="logo"/>
             </div>
-            <main></main>
+            <main className={cx('content')}>
+                <div className={cx('add')}>
+                    <AddItem center='true'/>
+                </div>
+                <div className={cx('item')}>
+                    <ShortCut/>
+                </div>
+            </main>
         </div>
     )
 }
