@@ -2,23 +2,23 @@
 
 .header{
     height: 3.5rem;
-    background-color : #fe6f46;
+    background : #fe6f46;
 
     .wrapper-item{
         padding-left: 1rem;
         padding-right: 1rem;
         display: flex;
+        height: 100%;
         @include responsive();
 
         .logo{
             padding : 0.5rem;
-            height: 100%;
             width : 3rem;
         }
 
         .search{
-            height: 100%;
-            margin : auto;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .user{

@@ -9,8 +9,9 @@ const PageTemplate = ({header}) =>{
     return(
         <div className={cx('page')}>
             <div className={cx('header')}>
-            <Header logo="aa"/>
+            <Header logo="logo"/>
             </div>
+            <main></main>
         </div>
     )
 }

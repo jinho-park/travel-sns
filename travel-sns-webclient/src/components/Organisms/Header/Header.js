@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Header.scss';
 import classNames from 'classnames/bind';
-import { SearchBar } from 'components';
+import { SearchBar, User } from 'components';
 
 const cx = classNames.bind(styles);
 
@@ -15,7 +15,9 @@ const Header = ({logo}) => {
                 <div className={cx('search')}>
                     <SearchBar/>
                 </div>
-                <div className={cx('user')}></div>
+                <div className={cx('user')}>
+                    <User>data</User>
+                </div>
             </div>
         </div>
     )
