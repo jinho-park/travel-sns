@@ -1,22 +1,47 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './PageTemplate.scss';
-import { Header, AddItem, ShortCut } from 'components';
+import { AddItem, ShortCut } from 'components';
 
 const cx = classNames.bind(styles);
 
-const PageTemplate = ({header}) =>{
+const PageTemplate = ({
+        header, 
+        children, 
+        responsive,
+        padding,
+        like,
+        comment,
+        image,
+        title,
+        write,
+        date
+    }) =>{
+
     return(
         <div className={cx('page')}>
             <div className={cx('header')}>
-            <Header logo="logo"/>
+                <header>
+                    {header}
+                </header>
             </div>
-            <main className={cx('content')}>
+            <main className={cx('content', { 
+                responsive, padding
+            })}>
                 <div className={cx('add')}>
-                    <AddItem center='true'/>
+                    <AddItem center="true"/>
                 </div>
                 <div className={cx('item')}>
-                    <ShortCut/>
+                    <ShortCut 
+                        image={image} 
+                        like={like} 
+                        comment={comment} 
+                        title={title}
+                        write={write}
+                        date={date}
+                    >
+                        
+                    </ShortCut>
                 </div>
             </main>
         </div>

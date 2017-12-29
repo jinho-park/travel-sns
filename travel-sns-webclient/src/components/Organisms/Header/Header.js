@@ -12,7 +12,7 @@ export default class Header extends Component {
     handleContextRef = contextRef => this.setState({ contextRef });
 
     render(){
-        const { logo } = this.props;
+        const { logo, user } = this.props;
         const { contextRef } = this.state;
 
         return(
@@ -26,7 +26,7 @@ export default class Header extends Component {
                             <SearchBar/>
                         </div>
                         <div>
-                            <User>data</User>
+                            <User>{user}</User>
                         </div>
                     </div>
                 </div>

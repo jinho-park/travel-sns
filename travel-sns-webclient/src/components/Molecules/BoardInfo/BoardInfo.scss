@@ -1,0 +1,46 @@
+@import 'utils';
+
+.boardinfo{
+    width: 100%;
+    height: 100%;
+
+    .region{
+        display: flex;
+        height: 20%;
+
+        .right-side{
+            margin-left: auto;
+        }
+    }
+
+    .title{
+        height: 55%;
+    }
+    .writter{
+        width: 100%;
+        height: 10%;
+        text-align: right;
+        margin-left: auto;
+    }
+
+    .line{
+        width: 100%;
+        height: 1px;
+        background: black;
+    }
+
+    .bottom{
+        height: 20%;
+        width: 100%;
+        display: flex;
+
+        .date{
+
+        }
+
+        .comment{
+            display: flex;
+            margin-left: auto;
+        }
+    }
+}
