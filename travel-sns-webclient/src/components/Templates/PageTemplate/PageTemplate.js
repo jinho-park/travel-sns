@@ -25,7 +25,7 @@ const PageTemplate = ({
                     {header}
                 </header>
             </div>
-            <main className={cx('content', { 
+            <main className={cx('content', {
                 responsive, padding
             })}>
                 <div className={cx('add')}>
