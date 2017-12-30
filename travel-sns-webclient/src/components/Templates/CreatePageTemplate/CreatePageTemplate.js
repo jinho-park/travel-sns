@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import styles from './PageTemplate.scss';
+import styles from './CreatePageTemplate.scss';
 import { Header, CustomInput } from 'components';
 import { Dropdown, TextArea, Button } from 'semantic-ui-react';
 
@@ -11,7 +11,7 @@ const options = [
     { key: 'key3', text: 'text3', value: 'value3' },
   ];
 
-const PageTemplate = ({header}) =>{
+const CreatePageTemplate = ({header}) =>{
     return(
         <div className={cx('page')}>
             <div className={cx('header')}>
@@ -48,4 +48,4 @@ const PageTemplate = ({header}) =>{
     )
 }
 
-export default PageTemplate;
+export default CreatePageTemplate;
