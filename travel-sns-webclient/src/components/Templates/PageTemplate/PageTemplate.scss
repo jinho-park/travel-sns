@@ -17,9 +17,7 @@
         }
 
         &.responsive{
-            width: 800px;
-            margin: 0 auto;
-            @include responsive();
+            @include responsive(800px);
         }
 
         .add{
@@ -27,8 +25,5 @@
             padding-bottom: 2rem;
         }
 
-        .item{
-            margin: 0 auto;
-        }
     }
 }

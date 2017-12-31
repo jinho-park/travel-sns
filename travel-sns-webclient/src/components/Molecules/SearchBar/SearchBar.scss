@@ -7,14 +7,14 @@
 }
 
 Input{
-    width: 40rem;
+    width: 20rem;
 
     transition: width .3s ease-in-out;
 
     @include media("<large"){
-        width: 25rem;
+        width: 15rem;
     }
     @include media("<medium"){
-        width: 11rem;
+        width: 10rem;
     }
 }

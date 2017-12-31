@@ -25,7 +25,7 @@ export default class Header extends Component {
                         <div className={cx('search')}>
                             <SearchBar/>
                         </div>
-                        <div>
+                        <div className={cx('user')}>
                             <User>{user}</User>
                         </div>
                     </div>

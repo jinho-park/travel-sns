@@ -1,11 +1,11 @@
-@mixin responsive() {
-    width: 1200px;
+@mixin responsive($width : 1200px) {
+    width: $width;
     margin: 0 auto;
     transition: width .3s ease-in-out;
     @include media("<huge"){
-        width: 1024px;
+        width: 750px;
     }
-    @include media("<large"){
+    @include media("<medium"){
         width: 100%;
     }
 }

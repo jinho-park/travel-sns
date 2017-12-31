@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 const User = ({children}) => {
     return(
         <div className={cx('user')}>
-            <div className={cx('id')}>{children} 님 환영합니다</div>
+            <div className={cx('id')}>{children}</div>
             <div className={cx('iconGroup')}>
                 <Popup
                     trigger={<Icon link name="sign out" size="big"/>}
