@@ -4,11 +4,15 @@
     display: flex;
     margin: 0 auto;
     width: 100%;
-    border-style: solid;
-    border-color: #495c79;
     border-radius: 16px;
     border-width: 1px;
     padding:0.5rem 1rem;
+    @include material_shadow(1);
+
+    &:hover{
+        @include material_shadow(2);
+        cursor: pointer;
+    }
 
     .image{
         width: 300px;

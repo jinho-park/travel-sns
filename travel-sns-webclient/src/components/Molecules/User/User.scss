@@ -3,12 +3,19 @@
 .user{
 
     display: flex;
-    font-weight: 200;
 
     .id{
         padding-top : 0.1rem;
         padding-bottom : 0.1rem;
+        padding-right: 1rem;
         text-align: center; 
+        font-size: 20px;
+        font-weight: 100;
+
+        &:hover{
+            color: #495c79;
+            text-decoration: underline;
+        }
     }
     .iconGroup{
         padding-left: 0.3rem;

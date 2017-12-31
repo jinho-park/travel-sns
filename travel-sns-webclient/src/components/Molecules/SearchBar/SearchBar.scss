@@ -8,7 +8,6 @@
 
 Input{
     width: 20rem;
-
     transition: width .3s ease-in-out;
 
     @include media("<large"){
