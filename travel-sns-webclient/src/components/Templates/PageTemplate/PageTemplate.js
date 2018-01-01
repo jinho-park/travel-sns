@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './PageTemplate.scss';
 import { AddItem, ShortCut } from 'components';
+import { Rail } from 'semantic-ui-react';
 
 const cx = classNames.bind(styles);
 

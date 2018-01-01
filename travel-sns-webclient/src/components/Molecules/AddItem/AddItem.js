@@ -5,13 +5,14 @@ import { Card } from 'semantic-ui-react';
 
 const cx = classNames.bind(styles);
 
-const AddItem = ({center}) => {
+const AddItem = ({center, click}) => {
     return(
         <div className={cx('additem')}>
             <Card
                 link
-                centered={center}
+                centered
                 description='당신의 여행을 기록해보세요'
+                href='/create'
             />
         </div>
     )
