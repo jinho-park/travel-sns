@@ -3,11 +3,13 @@ import styles from './Login.scss';
 import classNames from 'classnames/bind';
 import { Button, Grid, Form, Icon } from 'semantic-ui-react';
 
+import { WelcomeButton } from 'components';
+
 const cx = classNames.bind(styles);
 
-const Login = ({divstyle}) => {
+const Login = ({ds_off}) => {
     return(
-        <div className={cx('Login')} style={{display:'none'}}>
+        <div className={cx('Login' , {ds_off}) } >
 
            
                         <Form.Input
@@ -16,6 +18,8 @@ const Login = ({divstyle}) => {
                             iconPosition='left'
                             placeholder='ID'
                         />
+
+                        
                         <Form.Input
                             fluid
                             icon='lock'
@@ -23,6 +27,8 @@ const Login = ({divstyle}) => {
                             placeholder='Password'
                             type='password'
                         />
+
+                        <div className={cx('error')}>* 없는 회원정보입니다. 다시 확인해주세요.</div>
 
 
                         <Grid>
@@ -35,9 +41,11 @@ const Login = ({divstyle}) => {
                                 </Button> 
                             </Grid.Column>
                             <Grid.Column floated='right' width={11}>
-                                <Button color = 'orange' fluid size = 'large' style={{ color: 'white', marginBottom: '1em' }} >로그인</Button>
+                            <WelcomeButton color = 'orange' label="로그인" /> 
                             </Grid.Column>
                         </Grid>
+
+
                        
      
 

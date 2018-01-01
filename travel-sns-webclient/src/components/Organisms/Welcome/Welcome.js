@@ -24,9 +24,9 @@ const Welcome = () => {
                     <Form size='large'>
                         <Segment raised>        
                             
-                            <Choice/>
-                            <Login divstyle="" />
-                            <Join divstyle="none"/>
+                            <Choice />
+                            <Login  />
+                            <Join  />
 
 
                         </Segment>

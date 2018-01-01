@@ -4,10 +4,15 @@ $display_no : none;
 $display_on : block;
 
 .Join{
-    padding-top : 0.5rem;
-    padding-bottom: 0.5rem;
-    display: $display_no;
+    //padding-top : 0.5rem;
+    //padding-bottom: 0.5rem;
 
+    &.ds_off{
+        display: none;
+    }
+
+    .error{
+    }
 }
 
 

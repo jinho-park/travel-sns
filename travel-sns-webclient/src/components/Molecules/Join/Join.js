@@ -2,20 +2,22 @@ import React from 'react';
 import styles from './Join.scss';
 import classNames from 'classnames/bind';
 import { Button, Grid, Form, Icon, Divider } from 'semantic-ui-react';
+import { WelcomeButton } from 'components';
 
 const cx = classNames.bind(styles);
 
-const Join = ({divstyle}) => {
+const Join = ({ds_off}) => {
 
        
     return(
-        <div className={cx('Join')}>
+        <div className={cx('Join' , {ds_off}) } >
                         <Form.Input
                             fluid
                             icon='user'
                             iconPosition='left'
-                            placeholder='ID'
+                            placeholder='E-mail'
                         />
+                        <div className={cx('error')}>*이미 있는 E-mail입니다.</div>
                         <Form.Input
                             fluid
                             icon='lock'
@@ -30,12 +32,14 @@ const Join = ({divstyle}) => {
                             placeholder='Password Confirm'
                             type='password'
                         />
+                        <div className={cx('error')}>*비밀번호가 동일하지 않습니다. 다시 확인해주세요.</div>
                         <Form.Input
                             fluid
                             icon='id badge'
                             iconPosition='left'
                             placeholder='Nickname'
                         />
+                        <div className={cx('error')}>*이미 있는 닉네임입니다.</div>
 
 
                         <Grid>
@@ -48,7 +52,7 @@ const Join = ({divstyle}) => {
                                 </Button> 
                             </Grid.Column>
                             <Grid.Column floated='right' width={11}>
-                                <Button color = 'grey' fluid size = 'large' style={{ color: 'white', marginBottom: '1em' }} >회원가입 완료</Button>
+                                <WelcomeButton color = 'orange' label="회원가입 완료" /> 
                             </Grid.Column>
                         </Grid>
 
