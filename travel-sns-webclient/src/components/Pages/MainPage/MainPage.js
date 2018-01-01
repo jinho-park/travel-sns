@@ -3,7 +3,8 @@ import { PageTemplate, Header } from 'components';
 
 const MainPage = () => {
     return(
-        <PageTemplate header={<Header logo="logo" user="ss"/>} 
+        <PageTemplate
+            header={<Header logo="logo" user="ss"/>} 
             padding 
             responsive
             like='1'
