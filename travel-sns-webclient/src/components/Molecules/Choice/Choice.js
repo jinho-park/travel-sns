@@ -10,12 +10,11 @@ const cx = classNames.bind(styles);
 const Choice = () => {
 
 
-    
-
         return(
         
-            <div className={cx('Choice')}>
-                <Button onClick={ this.styles.hidden = 'true' }color = 'orange'  fluid size = 'large'  style={{ color: 'white', marginBottom: '1em' }} >로그인</Button> 
+            <div className={cx('Choice')} >
+                
+                <Button color = 'orange'  fluid size = 'large'  style={{ color: 'white', marginBottom: '1em' }} >로그인</Button> 
                 <Button color = 'grey'  fluid size = 'large' style={{ color: 'white', marginBottom: '1em' }} >회원가입</Button>
             </div>
 
