@@ -1,5 +1,5 @@
 import React    from 'react';
-import {SectionsContainer, Section, Welcome} from 'components';
+import {SectionsContainer, Section} from 'components';
 import { AuthContainer } from 'containers';
 
 export default class ScrollTemplate extends React.Component {

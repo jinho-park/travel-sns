@@ -12,18 +12,18 @@ class AuthContainer extends Component{
     }
 
     onLoginClickhandle = (e) =>{
-        const { mode, UserActions } = this.props;
-        console.log(mode);
-        console.log(UserActions);
-        UserActions.setForm();
+        const { UserActions } = this.props;
+        UserActions.setLoginForm();
     }
 
     onResisterClickhandle = (e) => {
-
+        const { UserActions } = this.props;
+        UserActions.setAuthForm();
     }
 
     onPrevClickhandle = (e) =>{
-
+        const { UserActions } = this.props;
+        UserActions.setInitForm();
     }
 
     onLoginhandle = (e) => {

@@ -12,7 +12,8 @@ const Welcome = ({
         onPrevClickhandle,
         onLoginhandle,
         onChangeInput,
-        mode
+        mode,
+        onRegisterhandle
     }) => {
     return(
         <div className={cx('welcome')}>
@@ -37,6 +38,9 @@ const Welcome = ({
                         />
                         <Join
                             mode={mode}
+                            onPrevClickhandle={onPrevClickhandle}
+                            onChangeInput={onChangeInput}
+                            onRegisterhandle={onRegisterhandle}
                         />
                     </Segment>
                     </Form>
