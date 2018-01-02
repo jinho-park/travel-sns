@@ -5,14 +5,19 @@ import { Button } from 'semantic-ui-react';
 
 const cx = classNames.bind(styles);
 
-const WelcomeButton = ({color, label, onClick}) => {
+const WelcomeButton = ({color, children, onclick, animated, name}) => {
     return(
-        <div>
-            <Button className={cx('WelcomeButton')} 
-                    fluid size = 'large'
-                    style={{ color: 'white', marginBottom: '1em' }}
-                    color={color}
-                    onclick={{onClick}}> {label} </Button>
+        <div className={cx('WelcomeButton')}>
+            <Button 
+                fluid
+                animated={animated}
+                size = 'large'
+                color={color}
+                name={name}
+                onClick={onclick}
+            >
+                {children}
+            </Button>
         </div>
     )
 }

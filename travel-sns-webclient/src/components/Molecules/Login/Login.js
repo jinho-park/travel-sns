@@ -2,53 +2,55 @@ import React from 'react';
 import styles from './Login.scss';
 import classNames from 'classnames/bind';
 import { Button, Grid, Form, Icon } from 'semantic-ui-react';
-
 import { WelcomeButton } from 'components';
 
 const cx = classNames.bind(styles);
 
-const Login = ({ds_off}) => {
+const Login = ({
+        ds_off, 
+        onPrevClickhandle,
+        onLoginhandle,
+        onChangeInput
+    }) => {
     return(
         <div className={cx('Login' , {ds_off}) } >
+            <Form.Input
+                fluid
+                icon='user'
+                onChange={onChangeInput}
+                iconPosition='left'
+                placeholder='ID'
+                name="id"
+            />
+            <Form.Input
+                fluid
+                icon='lock'
+                onChange={onChangeInput}
+                iconPosition='left'
+                placeholder='Password'
+                type='password'
+                name="password"
+            />
 
-           
-                        <Form.Input
-                            fluid
-                            icon='user'
-                            iconPosition='left'
-                            placeholder='ID'
-                        />
-
-                        
-                        <Form.Input
-                            fluid
-                            icon='lock'
-                            iconPosition='left'
-                            placeholder='Password'
-                            type='password'
-                        />
-
-                        <div className={cx('error')}>* 없는 회원정보입니다. 다시 확인해주세요.</div>
-
-
-                        <Grid>
-                            <Grid.Column floated='left' width={5}>
-                                <Button animated fluid size = 'large'>
-                                    <Button.Content visible>이전</Button.Content>
-                                    <Button.Content hidden>
-                                        <Icon name='left arrow' />
-                                    </Button.Content>
-                                </Button> 
-                            </Grid.Column>
-                            <Grid.Column floated='right' width={11}>
-                            <WelcomeButton color = 'orange' label="로그인" /> 
-                            </Grid.Column>
-                        </Grid>
-
-
-                       
-     
-
+            <div className={cx('error')}>* 없는 회원정보입니다. 다시 확인해주세요.</div>
+            <Grid>
+                <Grid.Column floated='left' width={5}>
+                    <WelcomeButton animated>
+                        <Button.Content visible onClick={onPrevClickhandle}>이전</Button.Content>
+                            <Button.Content hidden>
+                                <Icon name='left arrow' />
+                            </Button.Content>
+                        </WelcomeButton> 
+                </Grid.Column>
+                <Grid.Column floated='right' width={11}>
+                <WelcomeButton
+                    color='orange'
+                    onClick={onLoginhandle}
+                >
+                로그인
+                </WelcomeButton> 
+                </Grid.Column>
+            </Grid>
         </div>
     )
 }

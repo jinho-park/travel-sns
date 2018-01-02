@@ -8,32 +8,37 @@ import { Login, Choice, Join } from 'components';
 const cx = classNames.bind(styles);
 
 
-const Welcome = () => {
-
-    
-
+const Welcome = ({ 
+        onLoginClickhandle,
+        onResisterClickhandle,
+        onPrevClickhandle,
+        onLoginhandle,
+        onChangeInput
+    }) => {
     return(
-        <div className={cx('Parent_Welcome')}>
-        
-                <Grid 
-                    textAlign='center'
-                    style={{ height: '100%' }}
-                    verticalAlign='middle'
-                >
+        <div className={cx('welcome')}>
+            <Grid 
+                textAlign='center'
+                className={cx('grid')}
+                verticalAlign='middle'
+            >
                 <Grid.Column style={{ maxWidth: 400 }}>
                     <Form size='large'>
                         <Segment raised>        
-                            
-                            <Choice />
-                            <Login  />
-                            <Join  />
-
-
-                        </Segment>
+                        <Choice 
+                            onLoginClickhandle={onLoginClickhandle}
+                            onResisterClickhandle={onResisterClickhandle}
+                        />
+                        <Login
+                            onPrevClickhandle={onPrevClickhandle}
+                            onLoginhandle={onLoginhandle}
+                            onChangeInput={onChangeInput}
+                        />
+                        <Join  />
+                    </Segment>
                     </Form>
-                </Grid.Column>
-                </Grid>
-         
+               </Grid.Column>
+            </Grid>
         </div>
 
 
