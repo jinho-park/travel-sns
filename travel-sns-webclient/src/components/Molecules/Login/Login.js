@@ -7,13 +7,14 @@ import { WelcomeButton } from 'components';
 const cx = classNames.bind(styles);
 
 const Login = ({
-        ds_off, 
+        mode, 
         onPrevClickhandle,
         onLoginhandle,
         onChangeInput
     }) => {
+    if(mode !== 'login') return null;
     return(
-        <div className={cx('Login' , {ds_off}) } >
+        <div className={cx('Login') } >
             <Form.Input
                 fluid
                 icon='user'

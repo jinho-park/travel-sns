@@ -6,9 +6,10 @@ import { WelcomeButton} from 'components';
 
 const cx = classNames.bind(styles);
 
-const Choice = ({ds_off, onLoginClickhandle, onResisterClickhandle}) => {
+const Choice = ({mode, onLoginClickhandle, onResisterClickhandle}) => {
+    if(mode !== 'init') return null;
         return(
-            <div className={ cx('Choice' , {ds_off}) }>
+            <div className={ cx('Choice') }>
                 <WelcomeButton
                     color='orange'
                     name='login'

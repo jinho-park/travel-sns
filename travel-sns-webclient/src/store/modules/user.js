@@ -10,6 +10,8 @@ const initialState = {
 
 export default handleActions({
     [SET_FORM]: (state, action) => {
-        return state.setIn('mode', 'login');
+        return {
+            mode: 'login'
+        };
     }
 }, initialState);

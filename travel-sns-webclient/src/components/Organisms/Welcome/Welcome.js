@@ -4,16 +4,15 @@ import classNames from 'classnames/bind';
 import { Segment, Grid, Form } from 'semantic-ui-react';
 import { Login, Choice, Join } from 'components';
 
-
 const cx = classNames.bind(styles);
-
 
 const Welcome = ({ 
         onLoginClickhandle,
         onResisterClickhandle,
         onPrevClickhandle,
         onLoginhandle,
-        onChangeInput
+        onChangeInput,
+        mode
     }) => {
     return(
         <div className={cx('welcome')}>
@@ -28,13 +27,17 @@ const Welcome = ({
                         <Choice 
                             onLoginClickhandle={onLoginClickhandle}
                             onResisterClickhandle={onResisterClickhandle}
+                            mode={mode}
                         />
                         <Login
                             onPrevClickhandle={onPrevClickhandle}
                             onLoginhandle={onLoginhandle}
                             onChangeInput={onChangeInput}
+                            mode={mode}
                         />
-                        <Join  />
+                        <Join
+                            mode={mode}
+                        />
                     </Segment>
                     </Form>
                </Grid.Column>

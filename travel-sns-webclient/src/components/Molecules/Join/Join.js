@@ -6,9 +6,12 @@ import { WelcomeButton } from 'components';
 
 const cx = classNames.bind(styles);
 
-const Join = ({ds_off}) => {
+const Join = ({mode}) => {
+    if(mode !== 'auth') {
+        return null;
+    }
     return(
-        <div className={cx('Join' , {ds_off}) } >
+        <div className={cx('Join') } >
             <Form.Input
                 fluid
                 icon='user'

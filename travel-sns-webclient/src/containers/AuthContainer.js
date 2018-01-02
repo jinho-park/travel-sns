@@ -8,11 +8,14 @@ class AuthContainer extends Component{
     
     handleKeyPress=(e)=>{
         if(e.key !== 'enter') return;
-
+        
     }
 
     onLoginClickhandle = (e) =>{
-
+        const { mode, UserActions } = this.props;
+        console.log(mode);
+        console.log(UserActions);
+        UserActions.setForm();
     }
 
     onResisterClickhandle = (e) => {
@@ -40,6 +43,7 @@ class AuthContainer extends Component{
             onLoginhandle,
             onChangeInput
         } = this;
+        const { mode } = this.props;
         return(
             <Welcome
                 onLoginClickhandle={onLoginClickhandle}
@@ -47,6 +51,7 @@ class AuthContainer extends Component{
                 onPrevClickhandle={onPrevClickhandle}
                 onLoginhandle={onLoginhandle}
                 onChangeInput={onChangeInput}
+                mode={mode}
             />
         )
     }
@@ -54,8 +59,10 @@ class AuthContainer extends Component{
 
 export default connect(
     (state) => ({
+        mode: state.user.mode
     }),
     (dispatch) => ({
+        UserActions: bindActionCreators(userActions, dispatch)
     })
 )(AuthContainer);
 
