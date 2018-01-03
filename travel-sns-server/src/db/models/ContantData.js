@@ -1,17 +1,42 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const { Types : {} }= Schema;
 
 const ContantData = new Schema({
-    image: String,
-    country: String,
-    city: String,
+    imageFile: {
+        main: String,
+        files: [String]
+    },
+    place: {
+        country: String,
+        city: String
+    },
     title: String,
     tag: String,
     user: String,
-    date : Date,
+    item : {
+        date: [Date],
+        image: [[String]],
+        main: String
+    },
     like : Number,
-    open : Boolean
-})
+    open : Boolean,
+    textId: Number
+});
+
+ContantData.statics.contentRegister = function(){
+
+};
+
+ContantData.statics.contentUpdate = function(){
+
+}
+
+ContantData.statics.findContentByTitle = function(){
+
+}
+
+ContantData.statics.showContent = function(){
+
+}
 
 module.exports = mongoose.model('ContantData', ContantData);
