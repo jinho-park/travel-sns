@@ -7,17 +7,18 @@ import { Popup, Header } from 'semantic-ui-react';
 const cx = classNames.bind(styles);
 
 const BoardInfo = ({
-        title, 
-        write, 
-        like, 
-        comment, 
-        children, 
-        date
+        title,
+        write,
+        like,
+        comment,
+        date,
+        country,
+        city
     }) => {
     return(
         <div className={cx('boardinfo')}>
             <div className={cx('region')}>
-                <div>dd</div>
+                <div>{country} > {city}</div>
                 <div className={cx('right-side')}>
                     <Popup
                         trigger={<Cicon link="true" name="close" size="large"/>}

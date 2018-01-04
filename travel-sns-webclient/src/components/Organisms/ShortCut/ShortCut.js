@@ -5,14 +5,9 @@ import { BoardInfo } from 'components';
 
 const cx = classNames.bind(styles);
 
-const ShortCut = ({
-        image, 
-        like, 
-        comment, 
-        title, 
-        date, 
-        write
-    }) => {
+const ShortCut = ({data, image}) => {
+    const { title, like, comment, user, date, place } = data;
+    const { country, city } = place;
     return(
         <div className={cx('cut')}>
             <div className={cx('image')}>
@@ -23,11 +18,11 @@ const ShortCut = ({
                     title={title} 
                     like={like} 
                     comment={comment} 
-                    write={write}
+                    write={user}
                     date={date}
-                >
-
-                </BoardInfo>
+                    country={country}
+                    city={city}
+                />
             </div>
         </div>
     )
