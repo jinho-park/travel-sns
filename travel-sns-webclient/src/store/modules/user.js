@@ -21,11 +21,11 @@ export default handleActions({
     [SET_AUTH_FORM]: (state, action) => {
         return {
             mode : 'auth'
-        }
+        };
     },
     [SET_INIT_FORM]: (state, action) => {
         return {
             mode :'init'
-        }
+        };
     }
 }, initialState);

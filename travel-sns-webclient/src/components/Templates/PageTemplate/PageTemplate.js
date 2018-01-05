@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './PageTemplate.scss';
-import { AddItem, ShortCut } from 'components';
+import { AddItem } from 'components';
 import { Rail } from 'semantic-ui-react';
+import { BoardContainer } from 'containers';
 
 const cx = classNames.bind(styles);
 
@@ -33,16 +34,7 @@ const PageTemplate = ({
                     <AddItem center="true"/>
                 </div>
                 <div className={cx('item')}>
-                    <ShortCut 
-                        image={image} 
-                        like={like} 
-                        comment={comment} 
-                        title={title}
-                        write={write}
-                        date={date}
-                    >
-                        
-                    </ShortCut>
+                    <BoardContainer/>
                 </div>
             </main>
         </div>

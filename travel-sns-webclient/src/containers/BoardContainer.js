@@ -6,25 +6,27 @@ import * as contantActions from 'store/modules/contant';
 
 class BoardContainer extends Component{
     componentWillMount(){
-        ContantActions.getContantInfo();
+        const { ContantActions, items } = this.props;
+        ContantActions.getContantInfo(items);
     }
     handleClickContant=(e)=>{
-        const { history, data } = this.props;
-        const { _id } = data;
+        const { history, items } = this.props;
+        const { _id } = items;
 
         //ConstantActions.getContant();
     }
     render(){
-        const { data } = this.props;
+        const { items } = this.props;
+
         return(
-            <ShorCut data={data}/>
+            <ShortCut data={items}/>
         )
     };
 }
 
 export default connect(
     (state) => ({
-        data: state.contant.data
+        items: state.contant.items
     }),
     (dispatch) => ({
         ContantActions: bindActionCreators(contantActions, dispatch)

@@ -6,23 +6,26 @@ import { BoardInfo } from 'components';
 const cx = classNames.bind(styles);
 
 const ShortCut = ({data, image}) => {
-    const { title, like, comment, user, date, place } = data;
-    const { country, city } = place;
+    const itemList = data.map(
+        d => (
+            <BoardInfo
+                title={d.title}
+                like={d.like}
+                comment={d.comment}
+                write={d.user}
+                date={d.item.date}
+                country={d.place.country}
+                city={d.place.city}
+            />
+        )
+    )
     return(
         <div className={cx('cut')}>
             <div className={cx('image')}>
                 {image}
             </div>
             <div className={cx('info')}>
-                <BoardInfo 
-                    title={title} 
-                    like={like} 
-                    comment={comment} 
-                    write={user}
-                    date={date}
-                    country={country}
-                    city={city}
-                />
+                {itemList}
             </div>
         </div>
     )
