@@ -1,17 +1,21 @@
 require('dotenv').config();
 
 const express= require('express');
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const app = new express();
 const api = require('./api');
+const db = require('./db');
 
 const {
     PORT : port
 } = process.env;
 
-app.use(bodyparser.json());
+db.connect();
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 app.use('/api', api);
 

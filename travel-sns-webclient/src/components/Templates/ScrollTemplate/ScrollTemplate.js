@@ -1,6 +1,6 @@
-import React    from 'react';
-import {SectionsContainer, Section, Welcome} from 'components';
-import { AuthContainer, Header } from 'containers';
+import React from 'react';
+import { Header, SectionsContainer, Section } from 'components';
+import { AuthContainer } from 'containers';
 
 export default class ScrollTemplate extends React.Component {
   render() {
@@ -9,27 +9,34 @@ export default class ScrollTemplate extends React.Component {
       anchors:              ['sectionOne', 'sectionTwo', 'sectionThree', 'sectionFour'],
       scrollBar:            false,
       navigation:           true,
-      verticalAlign:        false,
+      verticalAlign:        true,
       sectionPaddingTop:    '0px',
       sectionPaddingBottom: '0px',
       arrowNavigation:      true
     };
 
     return (
+      <div>
       
 
-      <div>
-
+      
         
-
-
         <SectionsContainer className="container" {...options}>
-          <Section className="custom-section" verticalAlign="true" color="#69D2E7">
+          <Section className="custom-section" color="#69D2E7">
             <AuthContainer/>
           </Section>
-          <Section verticalAlign="true" color="#A7DBD8"></Section>
-          <Section verticalAlign="true" color="#E0E4CC"></Section>
-          <Section color="#E3E45C">Page 4</Section>
+          
+          <Section color="#A7DBD8">
+            page111
+          </Section>
+          
+          <Section color="#E0E4CC">
+          page222
+          </Section>
+          
+          <Section color="#E3E45C">
+          page333
+          </Section>
         </SectionsContainer>
       </div>
     );

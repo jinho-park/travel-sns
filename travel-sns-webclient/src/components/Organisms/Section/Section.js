@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { WelcomeHeader } from 'components';
 
 class Section extends React.Component {
     constructor() {
@@ -40,22 +41,29 @@ class Section extends React.Component {
         };
 
         return (
+            
             <div className={this.context.sectionClassName + (this.props.className ? ` ${this.props.className}` : '')}
                  id={this.props.id} style={sectionStyle}>
+                <WelcomeHeader logo="logo" />
                 {alignVertical ? this._renderVerticalAlign() : this.props.children}
             </div>
         );
     }
 
     _renderVerticalAlign() {
+        
+
         const verticalAlignStyle = {
-            display: 'table-cell',
+            display: 'table-row',
             verticalAlign: 'middle',
             width: '100%'
         };
+        
 
         return (
+            
             <div style={verticalAlignStyle}>
+                
                 {this.props.children}
             </div>
         );

@@ -7,13 +7,14 @@ import { WelcomeButton } from 'components';
 const cx = classNames.bind(styles);
 
 const Login = ({
-        ds_off, 
+        mode, 
         onPrevClickhandle,
         onLoginhandle,
         onChangeInput
     }) => {
+    if(mode !== 'login') return null;
     return(
-        <div className={cx('Login' , {ds_off}) } >
+        <div className={cx('Login') } >
             <Form.Input
                 fluid
                 icon='user'
@@ -35,17 +36,17 @@ const Login = ({
             <div className={cx('error')}>* 없는 회원정보입니다. 다시 확인해주세요.</div>
             <Grid>
                 <Grid.Column floated='left' width={5}>
-                    <WelcomeButton animated>
-                        <Button.Content visible onClick={onPrevClickhandle}>이전</Button.Content>
+                    <WelcomeButton animated onclick={onPrevClickhandle}>
+                        <Button.Content visible>이전</Button.Content>
                             <Button.Content hidden>
-                                <Icon name='left arrow' />
+                                <Icon name='left arrow'/>
                             </Button.Content>
                         </WelcomeButton> 
                 </Grid.Column>
                 <Grid.Column floated='right' width={11}>
                 <WelcomeButton
                     color='orange'
-                    onClick={onLoginhandle}
+                    onclick={onLoginhandle}
                 >
                 로그인
                 </WelcomeButton> 

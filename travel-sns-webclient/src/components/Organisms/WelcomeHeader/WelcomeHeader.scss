@@ -1,0 +1,32 @@
+@import 'utils';
+
+.header{
+    height: 3.5rem;
+    //background : #ffffff;
+    //opacity: 0.3;
+
+    .wrapper-item{
+        padding-left: 1rem;
+        padding-right: 1rem;
+        display: flex;
+        height: 100%;
+        @include responsive();
+        
+
+        .logo{
+            padding : 0.5rem;
+            width : 3rem;
+            cursor: pointer;
+        }
+
+        .search{
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .LoginJoin{
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+    }
+}
