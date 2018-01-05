@@ -33,8 +33,9 @@ const Welcome = ({
                             onPrevClickhandle={onPrevClickhandle}
                             onLoginhandle={onLoginhandle}
                             onChangeInput={onChangeInput}
+                            ds_off
                         />
-                        <Join  />
+                        <Join ds_off />
                     </Segment>
                     </Form>
                </Grid.Column>

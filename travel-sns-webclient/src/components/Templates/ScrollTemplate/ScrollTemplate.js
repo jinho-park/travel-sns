@@ -1,6 +1,6 @@
 import React    from 'react';
 import {SectionsContainer, Section, Welcome} from 'components';
-import { AuthContainer } from 'containers';
+import { AuthContainer, Header } from 'containers';
 
 export default class ScrollTemplate extends React.Component {
   render() {
@@ -16,7 +16,13 @@ export default class ScrollTemplate extends React.Component {
     };
 
     return (
+      
+
       <div>
+
+        
+
+
         <SectionsContainer className="container" {...options}>
           <Section className="custom-section" verticalAlign="true" color="#69D2E7">
             <AuthContainer/>

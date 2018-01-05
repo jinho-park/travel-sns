@@ -1,7 +1,7 @@
 import React , { Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Welcome } from 'components';
+import { Welcome, Login, Join, Choice } from 'components';
 import * as userActions from 'store/modules/user';
 
 class AuthContainer extends Component{
@@ -12,14 +12,17 @@ class AuthContainer extends Component{
     }
 
     onLoginClickhandle = (e) =>{
-
+        if(e.handleKeyPress) return <Choice ds_off />;
+        
     }
 
     onResisterClickhandle = (e) => {
-
+        <Choice ds_off />
+        //<Join/>
     }
 
     onPrevClickhandle = (e) =>{
+
 
     }
 

@@ -6,7 +6,11 @@ import { WelcomeButton } from 'components';
 
 const cx = classNames.bind(styles);
 
-const Join = ({ds_off}) => {
+const Join = ({
+        ds_off,
+        onPrevClickhandle,
+        onRegisterhandle
+    }) => {
     return(
         <div className={cx('Join' , {ds_off}) } >
             <Form.Input
