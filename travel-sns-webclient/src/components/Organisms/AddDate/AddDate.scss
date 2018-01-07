@@ -1,0 +1,19 @@
+@import 'utils';
+
+.adddate{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    .date{
+        display: flex;
+
+        .close{
+            width: 100%;
+            text-align: right;
+
+            &.add{
+                
+            }
+        }
+    }
+}

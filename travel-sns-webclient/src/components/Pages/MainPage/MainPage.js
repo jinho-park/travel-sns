@@ -7,12 +7,6 @@ const MainPage = () => {
             header={<Header logo="logo" user="ss"/>} 
             padding 
             responsive
-            like='1'
-            comment='1'
-            image='1'
-            title="박진규"
-            write="진호"
-            date="2017/12/29"
         >
         </PageTemplate>
     )

@@ -18,6 +18,7 @@ const Join = ({
     return(
         <div className={cx('Join') } >
             <Form.Input
+                name="email"
                 fluid
                 icon='user'
                 iconPosition='left'
@@ -26,6 +27,7 @@ const Join = ({
             />
             <div className={cx('error')}>*이미 있는 E-mail입니다.</div>
                 <Form.Input
+                    name="password"
                     fluid
                     icon='lock'
                     iconPosition='left'
@@ -34,6 +36,7 @@ const Join = ({
                     onChange={onChangeInput}
                 />
                 <Form.Input
+                    name="cpassword"
                     fluid
                     icon='lock'
                     iconPosition='left'
@@ -43,6 +46,7 @@ const Join = ({
                 />
                 <div className={cx('error')}>*비밀번호가 동일하지 않습니다. 다시 확인해주세요.</div>
                 <Form.Input
+                    name="nickname"
                     fluid
                     icon='id badge'
                     iconPosition='left'

@@ -23,7 +23,7 @@ export default class Header extends Component {
                             {logo}
                         </div>
                         <div className={cx('search')}>
-                            <SearchBar/>
+                            <SearchBar className={cx('searchbar')}/>
                         </div>
                         <div className={cx('user')}>
                             <User>{user}</User>

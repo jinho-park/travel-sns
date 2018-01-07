@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './CreatePageTemplate.scss';
-import { Header, CustomInput } from 'components';
-import { Dropdown, TextArea, Button } from 'semantic-ui-react';
+import { CustomInput, AddDate } from 'components';
+import { Dropdown, Button, Input } from 'semantic-ui-react';
 
 const cx = classNames.bind(styles);
 const options = [
@@ -11,37 +11,43 @@ const options = [
     { key: 'key3', text: 'text3', value: 'value3' },
   ];
 
-const CreatePageTemplate = ({header}) =>{
+const CreatePageTemplate = ({
+        header,
+        padding,
+        responsive,
+    }) =>{
     return(
         <div className={cx('page')}>
             <div className={cx('header')}>
-                <Header logo="aa"/>
+                <header>
+                    {header}
+                </header>
             </div>
-            <div className={cx('mainContent')}>
+            <div className={cx('mainContent', {padding, responsive})}>
                 <div className={cx('standardDiv')}>
                     <CustomInput placeholder="이야기의 제목을 입력해 주세요"/>
                 </div>
-                <p/>
                 <div className={cx('dropdownDiv')}>
-                    <Dropdown defaultValue='value1' options={options} />
+                    <Dropdown className={cx('dropdown')} defaultValue='value1' options={options} />
+                    <Dropdown className={cx('dropdown')} defaultValue='value2' options={options} />
                 </div>
-                <div className={cx('dropdownDiv')}>
-                    <Dropdown defaultValue='value2' options={options} />
-                </div>
-                <p/>
                 <div className={cx('standardDiv')}>
-                    <TextArea placeholder='country hashs'/>
+                    <Input
+                        className={cx('input')}
+                        label={<Button>Add Tag</Button>}
+                        labelPosition="right"
+                        icon='tags'
+                        iconPosition='left'
+                        placeholder='Enter tag'
+                    />
                 </div>
-                <p/>
+                <AddDate add={true}/>
                 <div className={cx('standardDiv')}>
-                    날짜 추가
-                    <p/>
-                    <Button circular icon='add circle' />
+                    <Button circular icon='add circle'>날짜 추가</Button>
                 </div>
-                <p/>
                 <div className={cx('standardDiv')}>
-                    <Button>임시저장</Button>
-                    <Button>게시</Button>
+                    <Button className={cx('button')}>임시저장</Button>
+                    <Button className={cx('button')}>게시</Button>
                 </div>
             </div>
         </div>
