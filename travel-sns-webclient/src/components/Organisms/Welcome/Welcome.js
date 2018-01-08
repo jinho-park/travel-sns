@@ -13,8 +13,10 @@ const Welcome = ({
         onLoginhandle,
         onChangeInput,
         mode,
-        onRegisterhandle
+        onRegisterhandle,
+        form
     }) => {
+
     return(
         <div className={cx('welcome')}>
             <Grid 
@@ -41,6 +43,7 @@ const Welcome = ({
                             onPrevClickhandle={onPrevClickhandle}
                             onChangeInput={onChangeInput}
                             onRegisterhandle={onRegisterhandle}
+                            forms={form}
                         />
                     </Segment>
                     </Form>

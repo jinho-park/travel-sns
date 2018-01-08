@@ -13,14 +13,14 @@ const Choice = ({mode, onLoginClickhandle, onResisterClickhandle}) => {
                 <WelcomeButton
                     color='orange'
                     name='login'
-                    onclick={onLoginClickhandle}
+                    click={onLoginClickhandle}
                 >
                     로그인
                 </WelcomeButton>
                 <WelcomeButton
                     color='grey'
                     name='register'
-                    onclick={onResisterClickhandle}
+                    click={onResisterClickhandle}
                 >
                     회원가입
                 </WelcomeButton>

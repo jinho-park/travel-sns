@@ -3,12 +3,17 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Welcome } from 'components';
 import * as userActions from 'store/modules/user';
+import * as authActions from 'store/modules/auth';
 
 class AuthContainer extends Component{
     
     handleKeyPress=(e)=>{
         if(e.key !== 'enter') return;
         
+        const { mode } = this.props;
+
+        if(mode === 'login') this.onLoginhandle;
+        else this.onResisterhandle;
     }
 
     onLoginClickhandle = (e) =>{
@@ -18,6 +23,7 @@ class AuthContainer extends Component{
 
     onResisterClickhandle = (e) => {
         const { UserActions } = this.props;
+
         UserActions.setAuthForm();
     }
 
@@ -26,12 +32,23 @@ class AuthContainer extends Component{
         UserActions.setInitForm();
     }
 
-    onLoginhandle = (e) => {
+    onLoginhandle = () => {
 
     }
 
-    onChangeInput = (e) => {
+    onRegisterhandle = () => {
+        const { AuthActions, form, error } = this.props;
+        const { email, password, nickname } = form.toJS();
         
+
+        AuthActions.localRegister({email, password, nickname});
+    }
+
+    onChangeInput = (e) => {
+        const { AuthActions, form } = this.props;
+        const { name, value } = e.target;
+        
+        AuthActions.setInput({name, value});
     }
 
     render(){
@@ -41,9 +58,11 @@ class AuthContainer extends Component{
             onResisterClickhandle,
             onPrevClickhandle,
             onLoginhandle,
-            onChangeInput
+            onChangeInput,
+            onRegisterhandle
         } = this;
-        const { mode } = this.props;
+        const { mode, form } = this.props;
+        
         return(
             <Welcome
                 onLoginClickhandle={onLoginClickhandle}
@@ -51,7 +70,9 @@ class AuthContainer extends Component{
                 onPrevClickhandle={onPrevClickhandle}
                 onLoginhandle={onLoginhandle}
                 onChangeInput={onChangeInput}
+                onRegisterhandle={onRegisterhandle}
                 mode={mode}
+                form={form}
             />
         )
     }
@@ -59,10 +80,13 @@ class AuthContainer extends Component{
 
 export default connect(
     (state) => ({
-        mode: state.user.mode
+        mode: state.user.get('mode'),
+        error: state.auth.get('error'),
+        form : state.auth.get('form')
     }),
     (dispatch) => ({
-        UserActions: bindActionCreators(userActions, dispatch)
+        UserActions: bindActionCreators(userActions, dispatch),
+        AuthActions: bindActionCreators(authActions, dispatch)
     })
 )(AuthContainer);
 

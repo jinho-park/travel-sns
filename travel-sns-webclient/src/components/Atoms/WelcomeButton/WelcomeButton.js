@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 
 const cx = classNames.bind(styles);
 
-const WelcomeButton = ({color, children, onclick, animated, name}) => {
+const WelcomeButton = ({color, children, click, animated, name}) => {
     return(
         <div className={cx('WelcomeButton')}>
             <Button 
@@ -14,7 +14,7 @@ const WelcomeButton = ({color, children, onclick, animated, name}) => {
                 size = 'large'
                 color={color}
                 name={name}
-                onClick={onclick}
+                onClick={click}
             >
                 {children}
             </Button>

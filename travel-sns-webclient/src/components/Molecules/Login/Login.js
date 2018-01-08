@@ -36,7 +36,7 @@ const Login = ({
             <div className={cx('error')}>* 없는 회원정보입니다. 다시 확인해주세요.</div>
             <Grid>
                 <Grid.Column floated='left' width={5}>
-                    <WelcomeButton animated onclick={onPrevClickhandle}>
+                    <WelcomeButton animated click={onPrevClickhandle}>
                         <Button.Content visible>이전</Button.Content>
                             <Button.Content hidden>
                                 <Icon name='left arrow'/>
@@ -46,7 +46,7 @@ const Login = ({
                 <Grid.Column floated='right' width={11}>
                 <WelcomeButton
                     color='orange'
-                    onclick={onLoginhandle}
+                    click={onLoginhandle}
                 >
                 로그인
                 </WelcomeButton> 
