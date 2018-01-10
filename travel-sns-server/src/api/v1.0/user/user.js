@@ -53,31 +53,33 @@ exports.localRegister = (req, res)=>{
                 const error = {
                     dupliEmail : "중복된 이메일이 있습니다"
                 };
-                res.send(error);
+                throw error;
+            }else{
+                return User.findByNickname(nickname);
             }
-
-            return User.findByNickname(nickname);
-        }, function(err){
-            res.status(400).send('request error');
         })
         .then(function(result){
             if(result){
                 const error = {
                     dupliNick : "중복된 닉네임이 있습니다"
                 };
-                res.send(error);
+                throw error;
             }
-
-            return User.localRegister(email, hashpassword, nickname);
-        }, function(err){
-            res.status(400).send('request error');
+            else return User.localRegister(email, hashpassword, nickname);
         })
         .then(function(result){
             res.send('Success Register');
-        }, function(err){
-            res.status(400).send('request error');
         })
         .catch(function(err){
-            res.status(409).send('error request');
+            res.send(err);
         });
+}
+
+exports.socialRegister = (req, res)=>{
+    res.send('아직 안만들어짐');
+}
+
+exports.localLogin = (req, res) => {
+    const { email, password } = res.body;
+    res.send('not complete');
 }

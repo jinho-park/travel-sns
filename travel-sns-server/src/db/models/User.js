@@ -22,6 +22,10 @@ User.statics.findByNickname = function(nickname){
     return this.findOne({nickname}).exec();
 }
 
+User.statics.findExistUser = function(email, nickname){
+    return this.findOne({email, nickname}).exec();
+}
+
 User.statics.localRegister = function(email, password, nickname){
     
     const user = new this({
