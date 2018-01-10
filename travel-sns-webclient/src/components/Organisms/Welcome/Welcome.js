@@ -14,7 +14,8 @@ const Welcome = ({
         onChangeInput,
         mode,
         onRegisterhandle,
-        form
+        form,
+        error
     }) => {
 
     return(
@@ -44,6 +45,7 @@ const Welcome = ({
                             onChangeInput={onChangeInput}
                             onRegisterhandle={onRegisterhandle}
                             forms={form}
+                            error={error}
                         />
                     </Segment>
                     </Form>

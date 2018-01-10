@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Join.scss';
 import classNames from 'classnames/bind';
-import { Button, Grid, Form, Icon, Divider } from 'semantic-ui-react';
+import { Button, Grid, Form, Icon, Divider, Label } from 'semantic-ui-react';
 import { WelcomeButton } from 'components';
 
 const cx = classNames.bind(styles);
@@ -11,7 +11,8 @@ const Join = ({
         onPrevClickhandle,
         onChangeInput,
         onRegisterhandle,
-        forms
+        forms,
+        error
     }) => {
 
     if(mode !== 'auth') {
@@ -25,6 +26,13 @@ const Join = ({
         nickname
     } = forms.toJS();
 
+    const {
+        unformEmail,
+        duplicateEmail,
+        checkpassword,
+        duplicateNick
+    } = error.toJS();
+
     return(
         <div className={cx('Join') } >
             <Form.Input
@@ -36,7 +44,9 @@ const Join = ({
                 placeholder='E-mail'
                 onChange={onChangeInput}
             />
-            <div className={cx('error')}>*이미 있는 E-mail입니다.</div>
+            { duplicateEmail ? <Label basic color='red' pointing>이미 있는 이메일 입니다</Label> : null}
+            { unformEmail ? <Label basic color='red' pointing>잘못된 이메일 형식입니다</Label> : null}
+
                 <Form.Input
                     value={password}
                     name="password"
@@ -57,7 +67,7 @@ const Join = ({
                     type='password'
                     onChange={onChangeInput}
                 />
-                <div className={cx('error')}>*비밀번호가 동일하지 않습니다. 다시 확인해주세요.</div>
+                { duplicateEmail ? <Label basic color='red' pointing>비밀번호가 일치하지 않습ㄴ디ㅏ</Label> : null}
                 <Form.Input
                     value={nickname}
                     name="nickname"

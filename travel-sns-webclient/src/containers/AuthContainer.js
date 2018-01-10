@@ -40,7 +40,13 @@ class AuthContainer extends Component{
         const { AuthActions, form, error } = this.props;
         const { email, password, nickname } = form.toJS();
         
-
+        const contraints = {
+            email: {
+                email: {
+                    
+                }
+            }
+        }
         AuthActions.localRegister({email, password, nickname});
     }
 
@@ -61,7 +67,7 @@ class AuthContainer extends Component{
             onChangeInput,
             onRegisterhandle
         } = this;
-        const { mode, form } = this.props;
+        const { mode, form, error } = this.props;
         
         return(
             <Welcome
@@ -73,6 +79,7 @@ class AuthContainer extends Component{
                 onRegisterhandle={onRegisterhandle}
                 mode={mode}
                 form={form}
+                error={error}
             />
         )
     }
