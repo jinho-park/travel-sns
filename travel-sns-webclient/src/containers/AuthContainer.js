@@ -2,18 +2,21 @@ import React , { Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Welcome } from 'components';
+import validate from 'validate.js';
 import * as userActions from 'store/modules/user';
 import * as authActions from 'store/modules/auth';
+import { withRouter } from 'react-router-dom';
 
 class AuthContainer extends Component{
     
     handleKeyPress=(e)=>{
-        if(e.key !== 'enter') return;
+        if(e.key !== 'Enter') return;
         
         const { mode } = this.props;
 
-        if(mode === 'login') this.onLoginhandle;
-        else this.onResisterhandle;
+        if(mode === 'login') {
+            this.onLoginhandle();
+        }
     }
 
     onLoginClickhandle = (e) =>{
@@ -33,7 +36,18 @@ class AuthContainer extends Component{
     }
 
     onLoginhandle = () => {
+        const { AuthActions, form } = this.props;
+        const { email, password } = form.toJS();
 
+        if(email && password){
+            AuthActions.localSign({email, password});
+        }else{
+            console.log(error);
+            const error = {
+                loginError : "아이디 및 비밀번호를 입력해주세요"
+            }
+            AuthActions.setError(error);
+        }
     }
 
     onRegisterhandle = () => {
@@ -43,11 +57,28 @@ class AuthContainer extends Component{
         const contraints = {
             email: {
                 email: {
-                    
+                    message: "잘못된 형식입니다."
+                }
+            },
+            password : {
+                length:{
+                    minimum: 6,
+                    maximum: 30,
+                    tooShort: "최소 6자 이상 입력하여 주세요",
+                    tooLong: "최대 30자 입니다"
                 }
             }
         }
-        AuthActions.localRegister({email, password, nickname});
+
+        const validation = validate(form.toJS(), contraints);
+
+        if(validation){
+            console.log('error get');
+            AuthActions.setError(validation);
+        }else{
+            console.log('not error');
+            AuthActions.localRegister({email, password, nickname});
+        }
     }
 
     onChangeInput = (e) => {
@@ -67,7 +98,13 @@ class AuthContainer extends Component{
             onChangeInput,
             onRegisterhandle
         } = this;
-        const { mode, form, error } = this.props;
+        const { mode, form, error, history } = this.props;
+
+        const loginInfo = localStorage.getItem("userToken");
+
+        if(loginInfo !== 'undefined'){
+            history.push('main');
+        }
         
         return(
             <Welcome
@@ -80,6 +117,7 @@ class AuthContainer extends Component{
                 mode={mode}
                 form={form}
                 error={error}
+                onKeyPress={handleKeyPress}
             />
         )
     }
@@ -95,5 +133,5 @@ export default connect(
         UserActions: bindActionCreators(userActions, dispatch),
         AuthActions: bindActionCreators(authActions, dispatch)
     })
-)(AuthContainer);
+)(withRouter(AuthContainer));
 

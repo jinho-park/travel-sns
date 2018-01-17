@@ -3,23 +3,23 @@ const {
     JWT_HASH: secret
 } = process.env;
 
-function encodeToken(payload, data){
-    new Promise(
+function encodeToken(payload, subject){
+    return new Promise(
         (resolve, reject)=>{
             jwt.sign(payload, secret, {
-                issuer: "travel-sns",
-                expiresIn: "7d",
-                data
+                issuer: 'travel-sns',
+                expiresIn: '7d',
+                subject
             },(error, token) => {
                 if(error) reject(error);
-                resole(token);
+                resolve(token);
             });
         }
     );
 }
 
 function decodeToken(token){
-    new Promise(
+    return new Promise(
         (resolve, reject)=>{
             jwt.verify(token, secret, (error, decode) => {
                 if(error) reject(error);

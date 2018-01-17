@@ -26,6 +26,10 @@ User.statics.findExistUser = function(email, nickname){
     return this.findOne({email, nickname}).exec();
 }
 
+User.statics.localLogin = function(email, password){
+    return this.findOne({email, password}).exec();
+}
+
 User.statics.localRegister = function(email, password, nickname){
     
     const user = new this({

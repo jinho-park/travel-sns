@@ -1,13 +1,13 @@
 @import 'utils';
 
-$display_no : none;
-$display_on : block;
-
 .Join{
     //padding-top : 0.5rem;
     //padding-bottom: 0.5rem;
 
     .error{
+        margin-top: 0;
+        margin-bottom: 1em;
+        width: 100%;
     }
 }
 

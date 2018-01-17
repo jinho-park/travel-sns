@@ -12,7 +12,8 @@ const Join = ({
         onChangeInput,
         onRegisterhandle,
         forms,
-        error
+        error,
+        onKeyPress
     }) => {
 
     if(mode !== 'auth') {
@@ -27,11 +28,10 @@ const Join = ({
     } = forms.toJS();
 
     const {
-        unformEmail,
-        duplicateEmail,
-        checkpassword,
-        duplicateNick
-    } = error.toJS();
+        email: emailError,
+        password: passwordError,
+        nickname: nicknameError
+    } = error ? error.toJS() : { };
 
     return(
         <div className={cx('Join') } >
@@ -44,8 +44,7 @@ const Join = ({
                 placeholder='E-mail'
                 onChange={onChangeInput}
             />
-            { duplicateEmail ? <Label basic color='red' pointing>이미 있는 이메일 입니다</Label> : null}
-            { unformEmail ? <Label basic color='red' pointing>잘못된 이메일 형식입니다</Label> : null}
+            { emailError ? <Label className={cx('error')} basic color='red' pointing>{emailError}</Label> : null}
 
                 <Form.Input
                     value={password}
@@ -67,7 +66,7 @@ const Join = ({
                     type='password'
                     onChange={onChangeInput}
                 />
-                { duplicateEmail ? <Label basic color='red' pointing>비밀번호가 일치하지 않습ㄴ디ㅏ</Label> : null}
+                { passwordError ? <Label basic color='red' pointing>{passwordError}</Label> : null}
                 <Form.Input
                     value={nickname}
                     name="nickname"
@@ -76,8 +75,9 @@ const Join = ({
                     iconPosition='left'
                     placeholder='Nickname'
                     onChange={onChangeInput}
+                    onKeyPress={onKeyPress}
                 />
-                <div className={cx('error')}>*이미 있는 닉네임입니다.</div>
+                { nicknameError ? <Label basic color='red' pointing>{nicknameError}</Label> : null}
                 <Grid>
                     <Grid.Column floated='left' width={5}>
                         <WelcomeButton animated click={onPrevClickhandle}>

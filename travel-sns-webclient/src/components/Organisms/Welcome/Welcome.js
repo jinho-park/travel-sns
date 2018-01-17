@@ -15,7 +15,8 @@ const Welcome = ({
         mode,
         onRegisterhandle,
         form,
-        error
+        error,
+        onKeyPress
     }) => {
 
     return(
@@ -37,7 +38,9 @@ const Welcome = ({
                             onPrevClickhandle={onPrevClickhandle}
                             onLoginhandle={onLoginhandle}
                             onChangeInput={onChangeInput}
+                            forms={form}
                             mode={mode}
+                            onKeyPress={onKeyPress}
                         />
                         <Join
                             mode={mode}
@@ -46,6 +49,7 @@ const Welcome = ({
                             onRegisterhandle={onRegisterhandle}
                             forms={form}
                             error={error}
+                            onKeyPress={onKeyPress}
                         />
                     </Segment>
                     </Form>

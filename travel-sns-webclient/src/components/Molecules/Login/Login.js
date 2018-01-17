@@ -10,9 +10,17 @@ const Login = ({
         mode, 
         onPrevClickhandle,
         onLoginhandle,
-        onChangeInput
+        onChangeInput,
+        forms,
+        onKeyPress
     }) => {
     if(mode !== 'login') return null;
+
+    const {
+        email,
+        password
+    } = forms.toJS();
+
     return(
         <div className={cx('Login') } >
             <Form.Input
@@ -21,7 +29,8 @@ const Login = ({
                 onChange={onChangeInput}
                 iconPosition='left'
                 placeholder='ID'
-                name="id"
+                name="email"
+                value={email}
             />
             <Form.Input
                 fluid
@@ -31,6 +40,8 @@ const Login = ({
                 placeholder='Password'
                 type='password'
                 name="password"
+                value={password}
+                onKeyPress={onKeyPress}
             />
 
             <div className={cx('error')}>* 없는 회원정보입니다. 다시 확인해주세요.</div>

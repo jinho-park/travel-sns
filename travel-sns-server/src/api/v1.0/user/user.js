@@ -7,6 +7,10 @@ const {
     CRY_HASH : secret
 } = process.env;
 
+function Hash(password){
+    return crypto.createHmac('sha256', secret).update(password).digest('hex');
+}
+
 exports.localRegister = (req, res)=>{
     const { email, password, nickname } = req.body;
     const constraints = {
@@ -45,13 +49,13 @@ exports.localRegister = (req, res)=>{
         res.send(error);
     }
 
-    const hashpassword = crypto.createHmac('sha256', secret).update(password).digest('hex');
+    const hashpassword = Hash(password);
 
     User.findByEmail(email)
         .then(function(result){
             if(result){
                 const error = {
-                    dupliEmail : "중복된 이메일이 있습니다"
+                    email : "중복된 이메일이 있습니다"
                 };
                 throw error;
             }else{
@@ -61,7 +65,7 @@ exports.localRegister = (req, res)=>{
         .then(function(result){
             if(result){
                 const error = {
-                    dupliNick : "중복된 닉네임이 있습니다"
+                    nickname : "중복된 닉네임이 있습니다"
                 };
                 throw error;
             }
@@ -80,6 +84,53 @@ exports.socialRegister = (req, res)=>{
 }
 
 exports.localLogin = (req, res) => {
-    const { email, password } = res.body;
-    res.send('not complete');
+    const { email, password } = req.body;
+    const hashpassword = Hash(password);
+
+    var name;
+    console.log('local login');
+    User.localLogin(email, hashpassword)
+        .then(function(result){
+            if(result){
+                const { nickname, email } = result;
+                name = nickname;
+                return jwt.encodeToken({
+                    user: {
+                        email,
+                        nickname
+                    }
+                }, 'user');
+            }else{
+                const error = {
+                    error : "아이디 패스워드를 확인해 주세요"
+                };
+                throw error;
+            }
+        }, function(err){
+            res.status(500).send('login request error');
+        })
+        .then(function(accessToken){
+            const token = {
+                accessToken,
+                name
+            };
+            res.send(token);
+        }, function(err){
+            res.send(err);
+        })
+        .catch(function(err){
+            console.log(err);
+            res.send('get error');
+        });
+}
+
+exports.getUserInfo = (req, res) => {
+    const { accessCode } = req.body;
+
+    jwt.decodeToken(accessCode)
+        .then(function(result){
+            console.log(result);
+        });
+
+    res.send('implement....');
 }
