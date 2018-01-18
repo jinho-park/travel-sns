@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import modules from './modules';
 import penderMiddleware from 'redux-pender';
+//import loggerMiddleware from './testMiddleWare';
 
 const configureStore = (initialState) => {
     const enhancers = [

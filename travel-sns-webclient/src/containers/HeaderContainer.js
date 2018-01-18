@@ -3,29 +3,54 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Header } from 'components';
 import * as userActions from 'store/modules/user';
+import { withRouter } from 'react-router-dom';
 
 class HeaderContainer extends Component{
-    componentDidMount(){
-        const { user } = this.props;
+    componentWillMount(){
+        const { userNickname, UserActions } = this.props;
+        const token = localStorage.getItem("userToken");
 
+        const data = {
+            accessToken : token
+        };
+
+        UserActions.getUser(data);
+    }
+
+    onLogouthandle = ()=>{
+        const { history, UserActions } = this.props;
+
+        UserActions.userSignout();
+        history.push('/');
+    }
+
+    onSettinghandle = () => {
+        const { history } = this.props;
+
+        history.push('/');
     }
 
     render(){
-        const { user } = this.props;
+        const { userNickname } = this.props;
+        const {
+            onLogouthandle
+        } = this;
 
         return(
-            <Header user={user}/>
+            <Header 
+                user={userNickname}
+                onLogouthandle={onLogouthandle}
+            />
         )
     }
 }
 
 export default connect(
     (state) => ({
-        userNickname: state.user.userNickname,
-        isLogin: state.user.isLogin,
-        userCode: state.user.userCode
+        userNickname: state.user.get('userNickname'),
+        isLogin: state.user.get('isLogin')
     }),
     (dispatch) => ({
         UserActions: bindActionCreators(userActions, dispatch)
     })
-)(HeaderContainer);
+)(withRouter(HeaderContainer));

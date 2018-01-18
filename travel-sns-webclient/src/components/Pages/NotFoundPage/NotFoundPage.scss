@@ -1,0 +1,7 @@
+@import 'utils';
+
+.not{
+    @include responsive();
+
+    text-align: center;
+}

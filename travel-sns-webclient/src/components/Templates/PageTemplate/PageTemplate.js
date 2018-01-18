@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './PageTemplate.scss';
 import { AddItem } from 'components';
 import { Rail } from 'semantic-ui-react';
-import { BoardContainer } from 'containers';
+import { BoardContainer, HeaderContainer } from 'containers';
 
 const cx = classNames.bind(styles);
 
@@ -23,9 +23,9 @@ const PageTemplate = ({
     return(
         <div className={cx('page')}>
             <div className={cx('header')}>
-                <header>
-                    {header}
-                </header>
+                <HeaderContainer>
+                    {HeaderContainer}
+                </HeaderContainer>
             </div>
             <main className={cx('content', {
                 responsive, padding

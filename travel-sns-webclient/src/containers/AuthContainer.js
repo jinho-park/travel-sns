@@ -22,6 +22,7 @@ class AuthContainer extends Component{
     onLoginClickhandle = (e) =>{
         const { UserActions } = this.props;
         UserActions.setLoginForm();
+        this.forceUpdate();
     }
 
     onResisterClickhandle = (e) => {
@@ -42,7 +43,6 @@ class AuthContainer extends Component{
         if(email && password){
             AuthActions.localSign({email, password});
         }else{
-            console.log(error);
             const error = {
                 loginError : "아이디 및 비밀번호를 입력해주세요"
             }
@@ -51,7 +51,7 @@ class AuthContainer extends Component{
     }
 
     onRegisterhandle = () => {
-        const { AuthActions, form, error } = this.props;
+        const { AuthActions, form } = this.props;
         const { email, password, nickname } = form.toJS();
         
         const contraints = {
@@ -82,7 +82,7 @@ class AuthContainer extends Component{
     }
 
     onChangeInput = (e) => {
-        const { AuthActions, form } = this.props;
+        const { AuthActions } = this.props;
         const { name, value } = e.target;
         
         AuthActions.setInput({name, value});
@@ -98,14 +98,13 @@ class AuthContainer extends Component{
             onChangeInput,
             onRegisterhandle
         } = this;
-        const { mode, form, error, history } = this.props;
 
-        const loginInfo = localStorage.getItem("userToken");
+        const { mode, form, error, history, loginResult } = this.props;
 
-        if(loginInfo !== 'undefined'){
-            history.push('main');
+        if(loginResult){
+            history.push('/main');
         }
-        
+
         return(
             <Welcome
                 onLoginClickhandle={onLoginClickhandle}
@@ -127,7 +126,8 @@ export default connect(
     (state) => ({
         mode: state.user.get('mode'),
         error: state.auth.get('error'),
-        form : state.auth.get('form')
+        form : state.auth.get('form'),
+        loginResult: state.auth.get('loginResult')
     }),
     (dispatch) => ({
         UserActions: bindActionCreators(userActions, dispatch),

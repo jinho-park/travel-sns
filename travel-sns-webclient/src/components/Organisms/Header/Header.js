@@ -12,7 +12,12 @@ export default class Header extends Component {
     handleContextRef = contextRef => this.setState({ contextRef });
 
     render(){
-        const { logo, user } = this.props;
+        const { 
+            logo,
+            user,
+            onLogouthandle,
+            onSettinghandle
+         } = this.props;
         const { contextRef } = this.state;
 
         return(
@@ -26,7 +31,12 @@ export default class Header extends Component {
                             <SearchBar className={cx('searchbar')}/>
                         </div>
                         <div className={cx('user')}>
-                            <User>{user}</User>
+                            <User
+                                onLogouthandle={onLogouthandle}
+                                onSettinghandle={onSettinghandle}
+                            >
+                                {user}
+                            </User>
                         </div>
                     </div>
                 </div>

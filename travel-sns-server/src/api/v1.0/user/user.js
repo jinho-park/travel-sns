@@ -125,12 +125,22 @@ exports.localLogin = (req, res) => {
 }
 
 exports.getUserInfo = (req, res) => {
-    const { accessCode } = req.body;
-
-    jwt.decodeToken(accessCode)
+    const { accessToken } = req.body;
+    jwt.decodeToken(accessToken)
         .then(function(result){
-            console.log(result);
-        });
-
-    res.send('implement....');
+            const { user } = result;
+            const { email, nickname } = user;
+            const simple = {
+                email,
+                nickname
+            }
+            res.send(simple);
+        }, function(err){
+            const error = {
+                error : "잘못된 회원 정보입니다"
+            }
+            console.log(err);
+            res.send(error)
+        }
+    );
 }
